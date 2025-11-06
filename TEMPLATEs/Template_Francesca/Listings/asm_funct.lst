@@ -1,0 +1,73 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             asm_functions, CODE, READONLY
+    2 00000000                 EXPORT           nome_funct
+    3 00000000         nome_funct
+    4 00000000         ; save current SP for a faster access 
+    5 00000000         ; to parameters in the stack
+    6 00000000 46EC            MOV              r12, sp
+    7 00000002         ; save volatile registers
+    8 00000002 E92D 4DF0       STMFD            sp!,{r4-r8,r10-r11,lr}
+    9 00000006         
+   10 00000006         ; r0 = buffer
+   11 00000006         ; r1 = final_index
+   12 00000006         
+   13 00000006         loop
+   14 00000006         
+   15 00000006         end_loop
+   16 00000006         ; restore volatile registers
+   17 00000006 E8BD 8DF0       LDMFD            sp!,{r4-r8,r10-r11,pc}
+   18 0000000A         
+   19 0000000A                 END
+Command Line: --debug --xref --diag_suppress=9931,A1950W --cpu=Cortex-M3 --depe
+nd=.\objects\asm_funct.d -o.\objects\asm_funct.o -I.\Source\button_EXINT -I.\So
+urce\CMSIS_core -I.\Source\led -I.\Source\RIT -I.\Source -I.\RTE\_SW_Debug -IC:
+\Users\franc\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include -IC:\Us
+ers\franc\AppData\Local\Arm\Packs\Keil\LPC1700_DFP\2.7.2\Device\Include --prede
+fine="__EVAL SETA 1" --predefine="__UVISION_VERSION SETA 541" --predefine="LPC1
+75x_6x SETA 1" --predefine="_RTE_ SETA 1" --list=.\listings\asm_funct.lst asm_f
+unct.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+asm_functions 00000000
+
+Symbol: asm_functions
+   Definitions
+      At line 1 in file asm_funct.s
+   Uses
+      None
+Comment: asm_functions unused
+end_loop 00000006
+
+Symbol: end_loop
+   Definitions
+      At line 15 in file asm_funct.s
+   Uses
+      None
+Comment: end_loop unused
+loop 00000006
+
+Symbol: loop
+   Definitions
+      At line 13 in file asm_funct.s
+   Uses
+      None
+Comment: loop unused
+nome_funct 00000000
+
+Symbol: nome_funct
+   Definitions
+      At line 3 in file asm_funct.s
+   Uses
+      At line 2 in file asm_funct.s
+Comment: nome_funct used once
+4 symbols
+338 symbols in table
